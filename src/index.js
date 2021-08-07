@@ -1,55 +1,40 @@
-const square =function(number){
-  return number*number;
+const person={
+  walk(){
+    console.log('this',this)
+  }
 }
-console.log(square(5));
+person.walk();//here this references to person
 
-const newsquare = (no) =>{
-  console.log(no*no);
+const person2={
+  walk(){
+    setTimeout(function(){
+      console.log('this',this);
+    },1000)
+  }
 }
-newsquare(6)
-//if single parameter
-const singlequare = no =>{
-  console.log(no*no);
+person2.walk(); // here,this references to window object
+//setTimeout is not part of any object,it is a standalone function
+
+//fix1 old js
+//how we can have a reference to person object inside callbackfunction
+const person3={
+ 
+  walk(){
+    var self=this
+    setTimeout(function(){
+      console.log('self',self);
+    },1000)
+  }
 }
-singlequare(4)
-
-//if no parameter
-
-const noparam = () =>{
-  console.log('no parameter');
+person3.walk(); 
+//fix2
+//use arrow function
+const person4={
+ 
+  walk(){
+    setTimeout(()=>{console.log('this',this);}
+    ,1000)
+  }
 }
-noparam();
-
-//if more parameter
-const multiparam =(a,b,c)=>{
-  console.log("a="+a);
-  console.log("b="+b);
-  console.log("c="+c);
-}
-multiparam(1,2,4)
-
-//if body of function include a single line only
-const singleLinefunction=number=>console.log(number*number)
-
-singleLinefunction(9)
-
-//or 
-const singleLinefunction2=number=>number*number//no return needed
-
-console.log(singleLinefunction2(100))
-
-
-//where arrow function is useful
-const jobs=[
-  {id:1,isActive:true},
-  {id:2,isActive:true},
-  {id:3,isActive:false}
-];
-
-//get only active jobs
-//when we call filtermethod,this method iterates over array,and pass it to function(job)
-const activeJobs=jobs.filter(function(job){return job.isActive});
-//filter jobs where job.isActive
-const activeJobs2=jobs.filter(job=>job.isActive);
-console.log(activeJobs);
-console.log(activeJobs2);
+person4.walk(); 
+//arrow function do not rebind this keyword
