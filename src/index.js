@@ -1,15 +1,12 @@
-//person is an object = key value pairs
-//function inside object is called method
-//walk is a method in person object
+//this returns reference to the current object
 const person = {
   name:'Sharath',
-  walk:function(){},
-  talk(){console.log(this.name)}//es6 syntax for method 
+  walk(){
+    console.log(this);
+  }
 };
-//2 ways to access members
-
-//bracket notation  --if we are unsure about object members
-const targetMember='names';
-person[targetMember] = 'Sharath 💯';
-//dot notation
-person.talk();
+//if this is called as menthod in an object,this references the the object
+person.walk()
+//if called funstion outside object,this references window object
+const walk = person.walk;
+walk()
