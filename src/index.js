@@ -1,40 +1,14 @@
-const person={
-  walk(){
-    console.log('this',this)
-  }
-}
-person.walk();//here this references to person
+//we are transforming array of colors ,for each color we are returning a string
+//coloritems is an array of generated strings
+const colors=['red','green','blue'];
+const coloritems=colors.map(function(item){
+  return '<li>'+item+'</li>'
+});
+console.log(coloritems)
 
-const person2={
-  walk(){
-    setTimeout(function(){
-      console.log('this',this);
-    },1000)
-  }
-}
-person2.walk(); // here,this references to window object
-//setTimeout is not part of any object,it is a standalone function
+const coloritems2=colors.map(item=>'<p>'+item+'</p>');
+console.log(coloritems2)
+//template literals in es6
 
-//fix1 old js
-//how we can have a reference to person object inside callbackfunction
-const person3={
- 
-  walk(){
-    var self=this
-    setTimeout(function(){
-      console.log('self',self);
-    },1000)
-  }
-}
-person3.walk(); 
-//fix2
-//use arrow function
-const person4={
- 
-  walk(){
-    setTimeout(()=>{console.log('this',this);}
-    ,1000)
-  }
-}
-person4.walk(); 
-//arrow function do not rebind this keyword
+const coloritems3=colors.map(item=>`<li>${item}</li>`);
+console.log(coloritems3)
