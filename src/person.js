@@ -1,4 +1,4 @@
-export class Person{
+export default class Person{
     constructor(name,age){
       this.name=name;
       this.age=age;
@@ -7,3 +7,7 @@ export class Person{
       console.log('walk');
     }
   }
+//export default Person
+export function coolfunction(){
+    console.log('cool')
+}

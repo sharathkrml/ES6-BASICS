@@ -1,4 +1,4 @@
-import { Person } from './person'
+import Person ,{coolfunction}from './person'
 export class Teacher extends Person{
     constructor(name,age,degree){
       super(name,age);
@@ -8,3 +8,7 @@ export class Teacher extends Person{
       console.log('teach');
     }
   }
+export function promote(){
+    coolfunction();
+}
+// Teacher and promote are named exports
