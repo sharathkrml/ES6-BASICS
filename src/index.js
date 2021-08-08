@@ -1,20 +1,3 @@
-//we have person object
-const person={
-  name:'Sharath',
-  walk(){
-    console.log('walk')
-  }
-};
-//if we want another person object
-const person2={
-  name:'Sharath2',
-  walk(){
-    console.log('walk')
-  }
-};
-//if implementaion of walk has any issues,debugging is complex
-//when we have an object with atleast one method,we need a blueprint to create objects of that type
-//class solves the problem
 class Person{
   //special method called constructor
   constructor(name,age){
@@ -22,10 +5,20 @@ class Person{
     this.age=age;
   }
   walk(){
-    console.log('walk')
+    console.log('walk');
   }
 }
-//sharath object of Person Class
-const sharath = new Person('sharath',21)
-console.log(sharath)
-sharath.walk()
+//whenever he have constructor in child class,we need to call constructor of parent class
+class Teacher extends Person{
+  constructor(name,age,degree){
+    super(name,age);
+    this.degree=degree;
+  }
+  teach(){
+    console.log('teach');
+  }
+}
+const newteacher = new Teacher('teachername',55,'MTECH')
+console.log(newteacher)
+newteacher.teach()
+newteacher.walk()
