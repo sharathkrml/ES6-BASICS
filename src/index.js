@@ -1,14 +1,20 @@
-//we are transforming array of colors ,for each color we are returning a string
-//coloritems is an array of generated strings
-const colors=['red','green','blue'];
-const coloritems=colors.map(function(item){
-  return '<li>'+item+'</li>'
-});
-console.log(coloritems)
-
-const coloritems2=colors.map(item=>'<p>'+item+'</p>');
-console.log(coloritems2)
-//template literals in es6
-
-const coloritems3=colors.map(item=>`<li>${item}</li>`);
-console.log(coloritems3)
+const address={
+  street:'streetname',
+  city:'cityname',
+  country:'countryname'
+};
+// we need to extract values of properties and store in separete variables
+//typically we do
+const street1 = address.street
+const city1 = address.city
+const country1 = address.country
+// we have reptitive address. code
+// destructuring solves the problem
+//const {street,city,country}=address
+// maybe we are only interested on street,then
+const {street} = address
+// if we want to use alias(street as st)
+const {street:st} =address
+console.log(street1,city1,country1)
+console.log(street)
+console.log(st)
